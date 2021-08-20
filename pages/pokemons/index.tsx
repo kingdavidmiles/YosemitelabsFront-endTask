@@ -6,8 +6,6 @@ import {
     Container,
     Image,
     Center,
-    MdCheckCircle,
-    MdSettings,
     Box,
     Text,
     Flex,
@@ -84,14 +82,14 @@ export default function Home() {
                                 <List spacing={3}>
 
                                       <ListItem className={styles.listStyle}>
-                                          <ListIcon as={MdCheckCircle} color="green.500"/>
+
                                        <Link href={"/pokemons/pokemonId"}>   Lorem ipsum dolor sit amet, consectetur adipisicing elit</Link>
                                       </ListItem>
 
 
 
                                     <ListItem className={styles.listStyle}>
-                                        <ListIcon as={MdCheckCircle} color="green.500"/>
+
                                        <Link href={"/pokemons/pokemonId"}>
                                            Assumenda, quia temporibus eveniet a libero incidunt suscipit
                                        </Link>
@@ -99,7 +97,7 @@ export default function Home() {
 
 
                                     <ListItem className={styles.listStyle}>
-                                        <ListIcon as={MdCheckCircle} color="green.500"/>
+                             
                                        <Link href={"/pokemons/pokemonId"}>
                                            Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
                                        </Link>

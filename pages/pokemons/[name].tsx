@@ -12,7 +12,11 @@ export default function PokemonPage() {
 
     const router = useRouter()
     const {name} = router.query
-    const [pokemon, setPokemon] = useState({})
+    const [pokemon, setPokemon] = useState({
+        name: undefined,
+        sprites: undefined,
+        abilities: undefined
+    })
     const [{data, loading, error}] = useAxios({
         url: `${process.env.API_URL}/pokemon/${name}`,
         method: "GET",
@@ -48,7 +52,7 @@ export default function PokemonPage() {
                 <Flex>
                     <Box p="4">
                         <Heading size="md">
-                            {pokemon?.name}
+                            {pokemon.name}
                         </Heading>
                     </Box>
                     <Spacer/>
@@ -74,7 +78,7 @@ export default function PokemonPage() {
                 <div className={styles.teamPokemonsCard}>
                     <div>
                         <Center>
-                            <Text fontSize="6xl">{pokemon.name}</Text>
+                            <Text fontSize="6xl">{pokemon?.name}</Text>
 
                         </Center>
                     </div>

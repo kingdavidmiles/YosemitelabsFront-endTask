@@ -5,27 +5,41 @@
     align-items: center;
 }
 
-.toolbarHeader{
-    border-bottom:3px solid black;
+.Namecontainer {
+    position: relative;
+    padding: 0 0.5rem;
+    top: 10rem;
+    align-items: center;
 }
-.buttoncolor{
-    border:none;
-    background:#319795 !important;
-    color:white
+
+.EmptyPokmoncontainer {
+    position: relative;
+    padding: 0 0.5rem;
+    top: 10rem;
+    align-items: center;
 }
-.buttoncolor:hover{
-    border:none;
-    background:#319795 !important;
+
+.buttoncolor {
+    border: none;
+    background: #319795 !important;
+    color: white
 }
-.listStyle{
+
+.buttoncolor:hover {
+    border: none;
+    background: #319795 !important;
+}
+
+.listStyle {
     background: mintcream;
-    padding-top:20px;
-    padding-bottom:20px;
-    border:1px solid gray;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 1px solid gray;
     cursor: pointer;
     text-align: center;
 
 }
+
 .teamPokemonsCardcontainer {
     position: relative;
     padding: 0 0.5rem;
@@ -33,25 +47,13 @@
     align-items: center;
     margin-bottom: 20px;
 }
-.teamPokemonsCard{
-    border:transparent;
-    background: #e0e0e0;
-    box-shadow:  20px 20px 30px #ffff,
-    -20px -20px 30px #ededed;
-    cursor:pointer;
+
+.teamPokemonsCard {
+    border: 2px solid #fbfbfb;
+
+
 }
-.frjscc {
-    min-height: 60px !important;
-    width: 100%;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-}
+
 @media (max-width: 600px) {
     .grid {
         width: 100%;

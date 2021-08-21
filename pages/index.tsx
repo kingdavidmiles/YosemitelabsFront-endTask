@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
+import {HomeLayout} from "../components/HomeLayout";
 import {ReactSearchAutocomplete} from 'react-search-autocomplete'
-import Link from 'next/link'
 import styles from "../styles/Home.module.css";
 import {useRouter} from 'next/router'
-import {Avatar, Box, Button, Center, Container, Flex, Grid, GridItem, Heading, Spacer, Text} from "@chakra-ui/react"
+import {Avatar, Box, Center, Container, Grid, GridItem, Text} from "@chakra-ui/react"
 import useAxios from "axios-hooks";
 import {PokemonCard} from "../components/PokemonCard";
 import axios from "axios";
@@ -68,23 +68,8 @@ function Home() {
 
     return (
         <div>
-            <div className={styles.toolbarHeader}>
-                <Flex>
-                    <Box p="4">
-                        <Heading size="md">Chakra App</Heading>
-                    </Box>
-                    <Spacer/>
-                    <Box p={4}>
-                        <Button colorScheme="teal" mr="4">
-                            <Link href={"/pokemons/team"}>
-                                Team Pokemons
-                            </Link>
-                        </Button>
-                        {/*<Button colorScheme="teal">Log in</Button>*/}
-                    </Box>
-                </Flex>
-            </div>
 
+            <HomeLayout/>
             <Container maxW="xl" className={styles.container}>
                 <div>
                     <Center>

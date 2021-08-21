@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import styles from "../../styles/Home.module.css";
 
 import {
+    Avatar,
     Box,
     Button,
     Center,
@@ -11,7 +12,6 @@ import {
     Grid,
     GridItem,
     Heading,
-    Image,
     Spacer,
     Text,
     useToast
@@ -69,9 +69,10 @@ export default function PokemonPage() {
     return (
         <div>
             {/*tool bar header*/}
-            <div className={styles.toolbarHeader}>
+            <div >
+                <Box boxShadow="xl">
                 <Flex>
-                    <Box p="4">
+                    <Box p="4" >
                         <Heading size="md">
                             {pokemon.name}
                         </Heading>
@@ -86,7 +87,7 @@ export default function PokemonPage() {
                                     </Link>
                                 </Button>
                             </GridItem>
-                            <GridItem colStart={4} colEnd={6} h="10">
+                            <GridItem colStart={3} colEnd={6} h="10">
                                 <div
                                     onClick={() =>
                                         toast({
@@ -100,6 +101,7 @@ export default function PokemonPage() {
                                     }
                                 >
                                     <Button
+
                                         className={styles.buttoncolor}
 
                                         onClick={() => addPokemonToTeam(pokemon)}
@@ -109,49 +111,47 @@ export default function PokemonPage() {
                         </Grid>
                     </Box>
                 </Flex>
+                </Box>
             </div>
 
-
-            <Container className={styles.container}>
-
-
-                {/**/}
-                <div className={styles.teamPokemonsCard}>
-                    <div>
-                        <Center>
-                            <Text fontSize="6xl">{pokemon?.name}</Text>
-
-                        </Center>
-                    </div>
-                    <div>
-                        <Center>
-                            <Image alt="images" src={pokemon.sprites?.front_default} style={{height: 400}}/>
-                        </Center>
-                    </div>
-                    <Center>
+            {/*tool bar header end here*/}
+            <Container className={styles.Namecontainer}>
+                <Box boxShadow='2xl'>
+                    {/**/}
+                    <div className={styles.teamPokemonsCard}>
                         <div>
-                            <Text fontSize="6xl">Abilty names</Text>
-
-                            <Box pt={2} pb={4}>
-                                {
-                                    pokemon.abilities?.map((item) => {
-                                        return (
-
-                                            <div key={item}>
-                                                <Text fontSize="2xl"> {item.ability.name}</Text>
-
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </Box>
+                            <Center>
+                                <Text fontSize="3xl" pt='4' pb='4' fontWeight="extrabold"
+                                      casing="capitalize">{pokemon?.name}</Text>
+                            </Center>
                         </div>
+                        <div>
+                            <Center>
+                                <Avatar size="1xl" name="Dan Abrahmov" src={pokemon.sprites?.front_default}/>
+                                {/*<Image alt="images" src={pokemon.sprites?.front_default} style={{height: 400}}/>*/}
+                            </Center>
+                        </div>
+                        <Center>
+                            <div>
+                                <Text fontSize="4xl" casing="capitalize" pt='4' pb='2'>Abilty names</Text>
 
-                    </Center>
+                                <Box pt={2} pb={4}>
+                                    {
+                                        pokemon.abilities?.map((item) => {
+                                            return (
 
-                </div>
+                                                <div key={item}>
+                                                    <Text fontSize="xl"> {item.ability.name}</Text>
 
-
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </Box>
+                            </div>
+                        </Center>
+                    </div>
+                </Box>
             </Container>
 
         </div>

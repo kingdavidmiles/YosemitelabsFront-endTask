@@ -2,14 +2,27 @@
 import React, {useEffect, useState} from "react";
 import styles from "../../styles/Home.module.css";
 
-import {Box, Button, Center, Container, Flex, Heading, Image, List, ListItem, Spacer, Text} from "@chakra-ui/react"
+import {
+    Box,
+    Button,
+    Center,
+    Container,
+    Flex,
+    Grid,
+    GridItem,
+    Heading,
+    Image,
+    Spacer,
+    Text,
+    useToast
+} from "@chakra-ui/react"
 import useAxios from "axios-hooks";
 import {useRouter} from "next/router";
 import useGlobal from "../../store";
 import Link from "next/link";
 
 export default function PokemonPage() {
-
+    const toast = useToast()
     const router = useRouter()
     const {name} = router.query
     const [pokemon, setPokemon] = useState({
@@ -30,10 +43,17 @@ export default function PokemonPage() {
         }
     }, [data])
 
+    useEffect(() => {
+        const data = localStorage.getItem("pokemon-list")
+        if (data) {
+            setPokemon(JSON.parse(data))
+        }
+    }, [])
 
-    // useEffect(() => {
-    //     console.warn(teamPokemons)
-    // }, [teamPokemons])
+    useEffect(() => {
+        return localStorage.setItem("pokemon-list", JSON.stringify(pokemon));
+
+    }, [pokemon])
 
 
     if (loading) {
@@ -45,6 +65,7 @@ export default function PokemonPage() {
             </div>
         )
     }
+    // @ts-ignore
     return (
         <div>
             {/*tool bar header*/}
@@ -57,15 +78,35 @@ export default function PokemonPage() {
                     </Box>
                     <Spacer/>
                     <Box p={4}>
-                        <Button colorScheme="teal" mr="4">
-                            <Link href="/pokemons/team">
-                                Team Pokemons
-                            </Link>
-                        </Button>
-                        <Button onClick={() => addPokemonToTeam(pokemon)} colorScheme="teal" mr="4">
-                            Add to team
-                        </Button>
-                        {/*<Button colorScheme="teal">Log in</Button>*/}
+                        <Grid templateColumns="repeat(5, 1fr)">
+                            <GridItem colSpan={2} h="10">
+                                <Button colorScheme="teal" mr="4">
+                                    <Link href="/pokemons/team">
+                                        Team Pokemons
+                                    </Link>
+                                </Button>
+                            </GridItem>
+                            <GridItem colStart={4} colEnd={6} h="10">
+                                <div
+                                    onClick={() =>
+                                        toast({
+                                            position: "top",
+                                            title: "Item added",
+                                            description: `"${pokemon.name}" have successfully added to the team`,
+                                            status: "success",
+                                            duration: 1000,
+                                            isClosable: true,
+                                        })
+                                    }
+                                >
+                                    <Button
+                                        className={styles.buttoncolor}
+
+                                        onClick={() => addPokemonToTeam(pokemon)}
+                                    >Add to team</Button>
+                                </div>
+                            </GridItem>
+                        </Grid>
                     </Box>
                 </Flex>
             </div>
@@ -97,7 +138,7 @@ export default function PokemonPage() {
                                         return (
 
                                             <div key={item}>
-                                                <Text fontSize="2xl" > {item.ability.name}</Text>
+                                                <Text fontSize="2xl"> {item.ability.name}</Text>
 
                                             </div>
                                         )

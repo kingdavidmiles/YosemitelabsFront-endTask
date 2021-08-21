@@ -1,7 +1,24 @@
 import globalHook from 'use-global-hook';
 
+const lsKey = "teamPokemons"
+/**
+ *
+ * @param pokemons
+ */
+const persistTeamPokemons=(pokemons)=>{
+    return localStorage.setItem(lsKey, JSON.stringify(pokemons))
+}
+
+/**
+ *
+ */
+export const getLocalTeamPokemons=()=>{
+    const pokemons = localStorage.getItem(lsKey)
+    return JSON.parse(pokemons) ?? []
+}
+
 const initialState = {
-    teamPokemons: [],
+    teamPokemons: getLocalTeamPokemons(),
 };
 
 const actions = {
@@ -13,8 +30,9 @@ const actions = {
         const prevPokemons = [...store.state.teamPokemons]
         const i = prevPokemons.findIndex(p => p.id === pokemon.id)
         if (i > -1) {
-            prevPokemons.splice(i, pokemon)
+            prevPokemons.splice(i, 1)
         }
+        persistTeamPokemons(prevPokemons)
         store.setState({teamPokemons: prevPokemons});
     },
     addPokemonToTeam: (store, pokemon) => {
@@ -24,6 +42,7 @@ const actions = {
         if (i === -1 && prevPokemons.length !== 6) {
             prevPokemons.push(pokemon)
         }
+        persistTeamPokemons(prevPokemons)
         store.setState({teamPokemons: prevPokemons});
     },
 };

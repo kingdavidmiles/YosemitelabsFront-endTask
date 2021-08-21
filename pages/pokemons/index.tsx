@@ -85,19 +85,13 @@ export default function Home() {
 
                                        <Link href={"/pokemons/pokemonId"}>   Lorem ipsum dolor sit amet, consectetur adipisicing elit</Link>
                                       </ListItem>
-
-
-
                                     <ListItem className={styles.listStyle}>
-
                                        <Link href={"/pokemons/pokemonId"}>
                                            Assumenda, quia temporibus eveniet a libero incidunt suscipit
                                        </Link>
                                     </ListItem>
 
-
                                     <ListItem className={styles.listStyle}>
-                             
                                        <Link href={"/pokemons/pokemonId"}>
                                            Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
                                        </Link>

@@ -3,11 +3,19 @@
     padding: 0 0.5rem;
     top: 70px;
     align-items: center;
-    height: 100vh;
 }
 
 .toolbarHeader{
     border-bottom:3px solid black;
+}
+.buttoncolor{
+    border:none;
+    background:#319795 !important;
+    color:white
+}
+.buttoncolor:hover{
+    border:none;
+    background:#319795 !important;
 }
 .listStyle{
     background: mintcream;
@@ -30,6 +38,7 @@
     background: #e0e0e0;
     box-shadow:  20px 20px 30px #ffff,
     -20px -20px 30px #ededed;
+    cursor:pointer;
 }
 .frjscc {
     min-height: 60px !important;

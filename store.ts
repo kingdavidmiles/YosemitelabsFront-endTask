@@ -5,6 +5,7 @@ const lsKey = "teamPokemons"
  *
  * @param pokemons
  */
+
 const persistTeamPokemons=(pokemons)=>{
     return localStorage.setItem(lsKey, JSON.stringify(pokemons))
 }
@@ -13,7 +14,7 @@ const persistTeamPokemons=(pokemons)=>{
  *
  */
 export const getLocalTeamPokemons=()=>{
-    const pokemons = localStorage.getItem(lsKey)
+    const pokemons = typeof window !== 'undefined' ? localStorage.getItem(lsKey):null
     return JSON.parse(pokemons) ?? []
 }
 

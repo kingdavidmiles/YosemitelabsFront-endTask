@@ -42,20 +42,6 @@ export default function PokemonPage() {
             setPokemon(data)
         }
     }, [data])
-
-    useEffect(() => {
-        const data = localStorage.getItem("pokemon-list")
-        if (data) {
-            setPokemon(JSON.parse(data))
-        }
-    }, [])
-
-    useEffect(() => {
-        return localStorage.setItem("pokemon-list", JSON.stringify(pokemon));
-
-    }, [pokemon])
-
-
     if (loading) {
         return (
             <div>
